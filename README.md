@@ -1,6 +1,6 @@
 # Elucidat - "FINDING THE TRUTH" - Test Automation Framework
 
-##A test framework for Elucidat.
+    ##A test framework for Elucidat.
 
 # Setup Instructions
 
