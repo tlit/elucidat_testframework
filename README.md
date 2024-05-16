@@ -7,7 +7,7 @@ A test framework for Elucidat.
 Follow these steps to set up the project environment.
 
 ## Clone the repository
-git clone https://github.com/tlit/elucidat_testframework
+```git clone https://github.com/tlit/elucidat_testframework
 
 cd elucidat_testframework
 
