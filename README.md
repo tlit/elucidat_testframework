@@ -8,6 +8,7 @@ Follow these steps to set up the project environment.
 
 # Clone the repository
 git clone https://github.com/tlit/elucidat_testframework
+
 cd your-repo
 
 # Create a virtual environment
