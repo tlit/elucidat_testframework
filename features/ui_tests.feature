@@ -32,3 +32,10 @@ Feature: Navigate to Case
       | card_number | judgement_page       |
       | 1           | case1_judgement_page |
       | 2           | case2_judgement_page |
+
+  Scenario: Ensure vote cannot be cast without selecting a radiobutton
+    When I click the START button
+    And I click CardImage 1
+    And I click the JUDGE THIS button
+    Then the Vote button is locked
+	

@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from page_elements import pages
+from pages.page_elements import pages
 
 logger = logging.getLogger('behave')
 
@@ -24,7 +24,7 @@ def wait_for_page_load(context, page_name):
                 EC.presence_of_element_located(element)
             )
         except TimeoutException:
-            raise TimeoutException(f"Expected page '{page_name}' was not loaded.")
+            raise AssertionError(f"Expected page '{page_name}' was not loaded.")
 
 @given('I am on the course homepage')
 def step_given_course_homepage(context):
@@ -64,22 +64,26 @@ def step_then_see_card_image(context, card_number):
     card_image = context.driver.find_element(By.ID, card_image_id)
     assert card_image.is_displayed(), f"CardImage {card_number} is not displayed"
 
-
 @then('the current score displays an integer')
 def step_then_current_score_displays_integer(context):
     logger.info("Checking if the current score displays an integer")
-    # Locate the paragraph element by its style attribute
     score_paragraph = context.driver.find_element(By.CSS_SELECTOR, 'p[style="text-align:center;"]')
-    
-    # Extract the text content of the paragraph
     score_text = score_paragraph.text
-    
-    # Use regular expression to find the integer score after the colon
     match = re.search(r'Your score so far:(\d+)', score_text)
-    
-    # Check if a match is found and extract the integer score
     if match:
         score = int(match.group(1))
         assert isinstance(score, int), "The score is not an integer"
     else:
         raise AssertionError("No integer score found in the text")
+
+@then('the Vote button is locked')
+def step_then_vote_button_locked(context):
+    logger.info("Checking if the Vote button is locked")
+    try:
+        WebDriverWait(context.driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, "//a[@id='pa_5c9126fe47260_p15515116385-save_button']"))
+        )
+        vote_button = context.driver.find_element(By.XPATH, "//a[@id='pa_5c9126fe47260_p15515116385-save_button']")
+        assert "fake_save_button--disabled" in vote_button.get_attribute("class"), "Vote button is not locked"
+    except TimeoutException:
+        assert False, "Vote button is not present on the page"
