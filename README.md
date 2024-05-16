@@ -1,17 +1,26 @@
 # Elucidat - "FINDING THE TRUTH" - Test Automation Framework
 
-## Instructions
+A test framework for Elucidat.
 
-1. Install dependencies using PIP:
-   `powershell
-   pip install -r requirements.txt
-   `
-2. Run the tests using Behave:
-   `powershell
-   behave features/ui_tests.feature
-   `
+## Setup Instructions
 
-## Directory Structure
-- **features/**: Contains Gherkin feature files and step definitions.
-- **tests/**: Contains Python scripts to run tests directly.
-- **requirements.txt**: List of Python dependencies.
+Follow these steps to set up the project environment.
+
+# Clone the repository
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+# On Windows
+venv\Scripts\activate
+# On macOS/Linux
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the tests
+behave
