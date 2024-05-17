@@ -1,4 +1,7 @@
-Feature: Elucidat Projects and Releases API
+Feature: Elucidat Projects and Releases API tests
+
+# This feature file tests some basic functions of the 'Projects and Releases' API
+# The steps herein are as-yet unimplemented due to time constraints.
 
   Background:
     Given I have a valid API key
